@@ -64,4 +64,31 @@ function submitAnswer() {
   }
 }
 
+function showResult() {
+    const quizContainer = document.getElementById("quiz-container");
+    quizContainer.innerHTML = `
+        <h1>Quiz Completed!</h1>
+        <p>Your score: <span style="color: #ffcc00; font-size: 22px;">${score} / ${questions.length}</span></p>
+        <button id="restart-btn">Play Again</button>
+    `;
+
+    document.getElementById("restart-btn").onclick = restartQuiz;
+}
+
+function restartQuiz() {
+    currentQuestion = 0;
+    score = 0;
+
+    document.getElementById("quiz-container").innerHTML = `
+        <h1>Quiz Game</h1>
+        <div id="question-counter"></div>
+        <div id="question-container"></div>
+        <div id="options-container"></div>
+        <button id="submit-btn" class="hidden">Submit</button>
+        <div id="result"></div>
+    `;
+
+    fetchQuestions();
+}
+
 fetchQuestions();
