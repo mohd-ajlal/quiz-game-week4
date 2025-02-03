@@ -1,4 +1,3 @@
-// Write your server logic here
 const http = require("http")
 const fs = require("fs")
 const path = require("path")
@@ -50,3 +49,4 @@ const server = http.createServer((req, res) => {
 server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })
+
