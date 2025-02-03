@@ -41,8 +41,27 @@ function displayQuestion() {
   }
 }
 
-function selectOption(index) {}
+function selectOption(index) {
+  const options = document.querySelectorAll("#options-container button");
+  options.forEach((option, i) => {
+    option.classList.toggle("selected", i === index);
+  });
+}
 
-function submitAnswer() {}
+function submitAnswer() {
+  const selectedOption = document.querySelector(
+    "#options-container button.selected"
+  );
+  if (selectedOption) {
+    const answer = selectedOption.textContent;
+    if (answer === questions[currentQuestion].answer) {
+      score++;
+    }
+    currentQuestion++;
+    displayQuestion();
+  } else {
+    alert("Please select an answer");
+  }
+}
 
 fetchQuestions();
